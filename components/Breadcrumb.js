@@ -7,7 +7,7 @@ export default function MuiBreadcrumb () {
     const theme = useTheme();
 
     return(
-        <Container maxWidth="lg" sx={{marginTop: {xs: 4, md: 1}}}>
+        <Container disableGutters maxWidth="lg" sx={{marginTop: {xs: 4, md: 1}, px:1}}>
             <Breadcrumbs
                 underline="hover" 
                 separator={<ChevronRight/>} 

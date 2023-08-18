@@ -1,9 +1,27 @@
-import { Container, Divider, Grid, Typography, useMediaQuery } from "@mui/material";
+import { Box, Container, Divider, Grid, Paper, Typography, useMediaQuery } from "@mui/material";
 import Sections from "./Sections";
 import { useTheme } from '@mui/material/styles';
 
 export default function Content () {
-    const theme = useTheme()
+    const theme = useTheme();
+    const cards = [
+        {
+            title: 'The box',
+            icon: '/scanner.svg',
+            descriptions: "Attendees will 'tap-in' using the registration box to log their presence."
+        },
+        {
+            title: 'Dashboard',
+            icon: '/monitor.svg',
+            descriptions: "Our dashboard, with its user-friendly design, simplifies administrative tasks and promotes easy comprehension of collected data."
+        },
+        {
+            title: 'App',
+            icon: '/mobile.svg',
+            descriptions: "Our new mobile app enables attendees to register their presence directly from their phone."
+        },
+    ]
+
     return (
         <Container disableGutters>
             <Grid container mt={3} px={{xs:0 , md:1}}>
@@ -21,7 +39,9 @@ export default function Content () {
                     >
                         Onboarding video
                     </Typography>
+
                     {/* Video */}
+
                     <Typography variant="h6" component="h3" color={'primary'} px={2}>
                         - Description
                     </Typography>
@@ -31,8 +51,23 @@ export default function Content () {
 
                     <Divider sx={{mx:2}}/>
 
-                    <Typography p={2} color="#0000004D">What you NEED</Typography>
+                    <Typography p={3} color="#0000004D">What you NEED</Typography>
 
+                    <Grid container spacing={3} px={3}>
+                        {
+                            cards.map(item => (
+                                <Grid item xs={12} md={4} mb={0} key={item.title}>
+                                    <Paper elevation={8} sx={{borderRadius: 3, padding: 3, minHeight: 256}}>
+                                        <Box display='flex' pb={2}>
+                                            <img src={ item.icon } alt={ item.title }/>
+                                            <Typography variant="h5" component="b" my="auto" pl={2}>{ item.title }</Typography>   
+                                        </Box> 
+                                        <Typography cpmponent={'p'} color="GrayText">{ item.descriptions }</Typography>
+                                    </Paper>
+                                </Grid>
+                            ))
+                        } 
+                    </Grid>
                 </Grid>
             </Grid>
         </Container>

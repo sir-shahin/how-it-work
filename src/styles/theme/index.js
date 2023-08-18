@@ -15,6 +15,21 @@ theme = createTheme({
     },
     body: {
       main: '#F7F7F4'
+    },
+    screemPink:{
+      main: '#000000'
+    }
+  },
+  typography: {
+    "fontFamily": `"DM Sans", "Arial", sans-serif`,
+    h2:{
+      fontFamily: 'Bai Jamjuree',
+    },
+    h3:{
+      fontFamily: 'Bai Jamjuree',
+    },
+    h4:{
+      fontFamily: 'Bai Jamjuree',
     }
   },
   components: {

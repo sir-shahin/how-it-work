@@ -12,6 +12,8 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
+import { useMediaQuery, useTheme } from '@mui/material';
+
 
 const pages = [
   { text:'How it works'},
@@ -22,22 +24,15 @@ const pages = [
 ];
 
 function AppHeader(props) {
+  const theme = useTheme();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
   };
 
   function ElevationScroll(props) {
@@ -67,7 +62,7 @@ function AppHeader(props) {
 
   return (
     <ElevationScroll {...props}>
-        <AppBar position="sticky" color="body">
+        <AppBar position={useMediaQuery(theme.breakpoints.down('md')) ? 'sticky' : 'static'} color="body">
           <Container maxWidth="lg" disableGutters>
             <Toolbar disableGutters sx={{padding: '0 24px'}}>
 
