@@ -6,7 +6,7 @@ export default function Faq() {
     const theme = useTheme();
     
     return (
-        <Grid container color="white" bgcolor="#BF2659" px={{lg:13 , xs:3}} py={7.5} mt={8}>
+        <Grid container color="white" bgcolor="#BF2659" px={{lg:13 , xs:3}} py={7.5} mt={11}>
             <Grid item xs={12} md={7}>
                 <Typography 
                     component={'div'}

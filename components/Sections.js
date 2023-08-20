@@ -14,7 +14,7 @@ export default function Sections() {
     color: 'white',
     borderRadius: { xs:0, md:3 }
   }
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = React.useState('panel1');
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -25,7 +25,7 @@ export default function Sections() {
         expanded={expanded === 'panel1'} 
         onChange={handleChange('panel1')} 
         disableGutters
-        sx={{ mb:2 }}
+        sx={{ mb:{md:2} }}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon color={expanded === 'panel1' ? 'light' : 'primary'}/>}
@@ -33,20 +33,20 @@ export default function Sections() {
           id="panel1a-header"
           sx={expanded === 'panel1' ? activePanelStyle : {}}
         >
-          <Typography>Wellcome</Typography>
+          <Typography variant="h5">Wellcome</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography variant='h6' component={'div'} mb={1}>
+          <Typography variant='h6' component={'div'} mb={2}>
             - Onboarding video
           </Typography>
-          <Typography component={'div'}>
-            <Link underline='none' color="GrayText">The box</Link>
+          <Typography component={'div'} mb={2}>
+            <Link underline='none' color="#00000099">The box</Link>
           </Typography>
-          <Typography component={'div'}>
-            <Link underline='none' color="GrayText">Sign in to Dashboard</Link>
+          <Typography component={'div'} mb={2}>
+            <Link underline='none' color="#00000099">Sign in to Dashboard</Link>
           </Typography>
-          <Typography component={'div'}>
-            <Link underline='none' color="GrayText">Mobile application</Link>
+          <Typography component={'div'} mb={1}>
+            <Link underline='none' color="#00000099">Mobile application</Link>
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -55,7 +55,7 @@ export default function Sections() {
         expanded={expanded === 'panel2'} 
         onChange={handleChange('panel2')} 
         disableGutters
-        sx={{ mb: 2, ":before": {display: 'none'} }}
+        sx={{ mb:{md: 2}, ":before": {display: 'none'} }}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon color={expanded === 'panel2' ? 'light' : 'primary'}/>}
@@ -63,7 +63,7 @@ export default function Sections() {
           id="panel2a-header"
           sx={expanded === 'panel2' ? activePanelStyle : {}}
         >
-          <Typography>Configuratin</Typography>
+          <Typography variant="h5">Configuratin</Typography>
         </AccordionSummary>
         <AccordionDetails>
         </AccordionDetails>
@@ -81,7 +81,7 @@ export default function Sections() {
           id="panel2a-header"
           sx={expanded === 'panel3' ? activePanelStyle : {}}
         >
-          <Typography>Data</Typography>
+          <Typography variant="h5">Data</Typography>
         </AccordionSummary>
         <AccordionDetails>
         </AccordionDetails>

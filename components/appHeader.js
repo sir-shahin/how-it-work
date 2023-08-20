@@ -13,6 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import { useMediaQuery, useTheme } from '@mui/material';
+import Image from 'next/image';
 
 
 const pages = [
@@ -37,9 +38,7 @@ function AppHeader(props) {
 
   function ElevationScroll(props) {
     const { children, window } = props;
-    // Note that you normally won't need to set the window ref as useScrollTrigger
-    // will default to window.
-    // This is only being set here because the demo is in an iframe.
+    
     const trigger = useScrollTrigger({
       disableHysteresis: true,
       threshold: 0,
@@ -47,16 +46,13 @@ function AppHeader(props) {
     });
   
     return React.cloneElement(children, {
-      elevation: trigger ? 4 : 0,
+      
+      elevation: (useMediaQuery(theme.breakpoints.down('md')) && trigger) ? 4 : 0,
     });
   }
 
   ElevationScroll.propTypes = {
     children: PropTypes.element.isRequired,
-    /**
-     * Injected by the documentation to work in an iframe.
-     * You won't need it on your project.
-     */
     window: PropTypes.func,
   };
 
@@ -67,7 +63,7 @@ function AppHeader(props) {
             <Toolbar disableGutters sx={{padding: '0 24px'}}>
 
               <Box sx={{ display: { xs: 'none', md: 'flex' }, mr: { xs:2 , lg: 9}}} >
-                <img src="/logo.svg" alt="logo"/>
+                <Image width={188.457} height={58.986} src="/logo.svg" alt="logo"/>
               </Box>
 
               <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -108,7 +104,7 @@ function AppHeader(props) {
               </Box>
               
               <Box py={2} sx={{flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                <img src="/logo-sign.svg" width="32" alt='logo'/>
+                <Image src="/logo-sign.svg" width="32" height="32" alt='logo'/>
               </Box>
               {/* Destop menu */}
               <Box py={4} sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>

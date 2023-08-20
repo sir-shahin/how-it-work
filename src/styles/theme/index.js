@@ -1,7 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 
-let theme = createTheme();
-theme = createTheme({
+const theme = createTheme({
   palette: {
     mode: 'light',
     background: {
@@ -30,6 +29,9 @@ theme = createTheme({
     },
     h4:{
       fontFamily: 'Bai Jamjuree',
+    },
+    h5:{
+      fontFamily: 'Bai Jamjuree',
     }
   },
   components: {
@@ -52,7 +54,7 @@ theme = createTheme({
     MuiAccordionSummary: {
       styleOverrides: {
         root: {
-          [theme.breakpoints.up('md')]: {
+          ["@media (min-width:800px)"]: {
             borderRadius: 12,
           },
           background:'#0F424D14',

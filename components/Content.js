@@ -1,6 +1,8 @@
 import { Box, Container, Divider, Grid, Paper, Typography, useMediaQuery } from "@mui/material";
 import Sections from "./Sections";
 import { useTheme } from '@mui/material/styles';
+import VideoJS from './VideoJs';
+import Image from "next/image";
 
 export default function Content () {
     const theme = useTheme();
@@ -21,12 +23,22 @@ export default function Content () {
             descriptions: "Our new mobile app enables attendees to register their presence directly from their phone."
         },
     ]
+    const videoJsOptions = {
+        controls: true,
+        responsive: true,
+        fluid: true,
+        poster: "/vposter.png",
+        sources: [{
+          src: '/res.mp4',
+          type: 'video/mp4'
+        }]
+    };
 
     return (
         <Container disableGutters>
             <Grid container mt={3} px={{xs:0 , md:1}}>
                 <Grid item xs={12} md={3} pr={{ md:2 }} mb={4}>
-                    <aside>
+                    <aside style={{ position: 'sticky', top:30}}>
                         <Sections />
                     </aside>
                 </Grid>
@@ -40,9 +52,11 @@ export default function Content () {
                         Onboarding video
                     </Typography>
 
-                    {/* Video */}
+                    <Box mt={1} mb={2} ml={{md:2}}>
+                        <VideoJS options={videoJsOptions} />
+                    </Box>
 
-                    <Typography variant="h6" component="h3" color={'primary'} px={2}>
+                    <Typography variant="h6" component="h3" color={'primary'} px={2} py={1}>
                         - Description
                     </Typography>
                     <Typography component="p" color="GrayText" px={2} mb={5}>
@@ -59,7 +73,7 @@ export default function Content () {
                                 <Grid item xs={12} md={4} mb={0} key={item.title}>
                                     <Paper elevation={8} sx={{borderRadius: 3, padding: 3, minHeight: 256}}>
                                         <Box display='flex' pb={2}>
-                                            <img src={ item.icon } alt={ item.title }/>
+                                            <Image width={48} height={48} src={ item.icon } alt={ item.title }/>
                                             <Typography variant="h5" component="b" my="auto" pl={2}>{ item.title }</Typography>   
                                         </Box> 
                                         <Typography cpmponent={'p'} color="GrayText">{ item.descriptions }</Typography>
