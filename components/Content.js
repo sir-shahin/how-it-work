@@ -1,4 +1,4 @@
-import { Box, Container, Divider, Grid, Paper, Stack, Typography, useMediaQuery } from "@mui/material";
+import { Box, Container, Divider, Paper, Stack, Typography, useMediaQuery } from "@mui/material";
 import Sections from "./Sections";
 import { useTheme } from '@mui/material/styles';
 import VideoJS from './VideoJs';
@@ -37,12 +37,12 @@ export default function Content () {
     return (
         <Container disableGutters>
             <Stack direction={useMediaQuery(theme.breakpoints.down('md')) ? 'column' : 'row'} mt={3} px={{xs:0 , md:1}}>
-                <Box flex={useMediaQuery(theme.breakpoints.up('md')) && '0 0 300px'} pr={{ md:2 }} mb={4}>
+                <Box flex={useMediaQuery(theme.breakpoints.up('md')) && '0 0 250px'} pr={{ md:2 }} mb={4}>
                     <aside style={{ position: 'sticky', top:30}}>
                         <Sections />
                     </aside>
                 </Box>
-                <Box flex={1} xs={12} md={9}>
+                <Box flex={1}>
                     <Typography 
                         variant={useMediaQuery(theme.breakpoints.down('md')) ? 'h4' : 'h3'} 
                         component="h1" 
@@ -67,21 +67,21 @@ export default function Content () {
 
                     <Typography p={3} color="#0000004D">What you NEED</Typography>
 
-                    <Grid container spacing={3} px={3}>
+                    <Stack direction={useMediaQuery(theme.breakpoints.down('md')) ? 'column' : 'row'} spacing={3} px={3}>
                         {
                             cards.map(item => (
-                                <Grid item xs={12} md={4} mb={0} key={item.title}>
-                                    <Paper elevation={8} sx={{borderRadius: 3, padding: 3, minHeight: 256}}>
+                                <Box flex={1} mb={0} key={item.title}>
+                                    <Paper elevation={8} sx={[{borderRadius: 3, padding: 3}, useMediaQuery(theme.breakpoints.up('md')) && {minHeight: 256}]}>
                                         <Box display='flex' pb={2}>
                                             <Image width={48} height={48} src={ item.icon } alt={ item.title }/>
                                             <Typography variant="h5" component="b" my="auto" pl={2}>{ item.title }</Typography>   
                                         </Box> 
                                         <Typography cpmponent={'p'} color="GrayText">{ item.descriptions }</Typography>
                                     </Paper>
-                                </Grid>
+                                </Box>
                             ))
                         } 
-                    </Grid>
+                    </Stack>
                 </Box>
             </Stack>
         </Container>
