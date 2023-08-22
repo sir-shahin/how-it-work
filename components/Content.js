@@ -1,4 +1,4 @@
-import { Box, Container, Divider, Grid, Paper, Typography, useMediaQuery } from "@mui/material";
+import { Box, Container, Divider, Grid, Paper, Stack, Typography, useMediaQuery } from "@mui/material";
 import Sections from "./Sections";
 import { useTheme } from '@mui/material/styles';
 import VideoJS from './VideoJs';
@@ -36,13 +36,13 @@ export default function Content () {
 
     return (
         <Container disableGutters>
-            <Grid container mt={3} px={{xs:0 , md:1}}>
-                <Grid item xs={12} md={3} pr={{ md:2 }} mb={4}>
+            <Stack direction={useMediaQuery(theme.breakpoints.down('md')) ? 'column' : 'row'} mt={3} px={{xs:0 , md:1}}>
+                <Box flex={useMediaQuery(theme.breakpoints.up('md')) && '0 0 300px'} pr={{ md:2 }} mb={4}>
                     <aside style={{ position: 'sticky', top:30}}>
                         <Sections />
                     </aside>
-                </Grid>
-                <Grid item xs={12} md={9}>
+                </Box>
+                <Box flex={1} xs={12} md={9}>
                     <Typography 
                         variant={useMediaQuery(theme.breakpoints.down('md')) ? 'h4' : 'h3'} 
                         component="h1" 
@@ -82,8 +82,8 @@ export default function Content () {
                             ))
                         } 
                     </Grid>
-                </Grid>
-            </Grid>
+                </Box>
+            </Stack>
         </Container>
     )
 }
