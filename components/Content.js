@@ -33,6 +33,13 @@ export default function Content () {
           type: 'video/mp4'
         }]
     };
+    const roundedPaper = [
+        {
+            borderRadius: 3,
+            padding: 3
+        }, 
+        useMediaQuery(theme.breakpoints.up('md')) && {minHeight: 256}
+    ]
 
     return (
         <Container disableGutters>
@@ -71,7 +78,7 @@ export default function Content () {
                         {
                             cards.map(item => (
                                 <Box flex={1} mb={0} key={item.title}>
-                                    <Paper elevation={8} sx={[{borderRadius: 3, padding: 3}, useMediaQuery(theme.breakpoints.up('md')) && {minHeight: 256}]}>
+                                    <Paper elevation={8} sx={roundedPaper}>
                                         <Box display='flex' pb={2}>
                                             <Image width={48} height={48} src={ item.icon } alt={ item.title }/>
                                             <Typography variant="h5" component="b" my="auto" pl={2}>{ item.title }</Typography>   
