@@ -13,8 +13,9 @@ import MenuItem from '@mui/material/MenuItem';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import { useMediaQuery, useTheme } from '@mui/material';
-import LogoSign from '@/assets/images/LogoSign';
-import Logo from '@/assets/images/Logo';
+import LogoSign from 'src/assets/images/LogoSign';
+import Logo from 'src/assets/images/Logo';
+import { AppProps } from 'next/app';
 
 
 const pages = [
@@ -25,11 +26,11 @@ const pages = [
   { text:'Contact Us'}
 ];
 
-function AppHeader(props) {
+function AppHeader(props:AppProps) {
   const theme = useTheme();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
-  const handleOpenNavMenu = (event) => {
+  const handleOpenNavMenu = (event:React.SetStateAction<any>) => {
     setAnchorElNav(event.currentTarget);
   };
 

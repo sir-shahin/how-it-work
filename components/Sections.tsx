@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -14,8 +14,8 @@ export default function Sections() {
     color: 'white',
     borderRadius: { xs:0, md:3 }
   }
-  const [expanded, setExpanded] = React.useState('panel1');
-  const handleChange = (panel) => (event, isExpanded) => {
+  const [expanded, setExpanded] = React.useState<string | false>('panel1');
+  const handleChange = (panel:string) => (event: SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);
   };
   

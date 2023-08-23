@@ -2,9 +2,9 @@ import { Box, Container, Divider, Paper, Stack, Typography, useMediaQuery } from
 import Sections from "./Sections";
 import { useTheme } from '@mui/material/styles';
 import VideoJS from './VideoJs';
-import Scanner from "@/assets/images/Scanner";
-import Mobile from "@/assets/images/Mobile";
-import Monitor from "@/assets/images/Monitor";
+import Scanner from "src/assets/images/Scanner";
+import Mobile from "src/assets/images/Mobile";
+import Monitor from "src/assets/images/Monitor";
 
 export default function Content () {
     const theme = useTheme();
@@ -85,7 +85,7 @@ export default function Content () {
                                             <item.icon />
                                             <Typography variant="h5" component="b" my="auto" pl={2}>{ item.title }</Typography>   
                                         </Box> 
-                                        <Typography cpmponent={'p'} color="GrayText">{ item.descriptions }</Typography>
+                                        <Typography component={'p'} color="GrayText">{ item.descriptions }</Typography>
                                     </Paper>
                                 </Box>
                             ))

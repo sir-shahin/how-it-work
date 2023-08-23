@@ -1,7 +1,7 @@
 import { Box, Button, Grid, Link, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
-import Logo from "@/assets/images/Logo";
-import LogoSign from "@/assets/images/LogoSign";
+import Logo from "src/assets/images/Logo";
+import LogoSign from "src/assets/images/LogoSign";
 
 export default function AppFooter(){
     const theme = useTheme();
