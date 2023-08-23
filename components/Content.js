@@ -44,7 +44,7 @@ export default function Content () {
     return (
         <Container disableGutters>
             <Stack direction={useMediaQuery(theme.breakpoints.down('md')) ? 'column' : 'row'} mt={3} px={{xs:0 , md:1}}>
-                <Box flex={useMediaQuery(theme.breakpoints.up('md')) && '0 0 250px'} pr={{ md:2 }} mb={4}>
+                <Box flex={useMediaQuery(theme.breakpoints.up('md')) && '0 0 288px'} pr={{ md:2 }} mb={4}>
                     <aside style={{ position: 'sticky', top:30}}>
                         <Sections />
                     </aside>
