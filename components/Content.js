@@ -2,24 +2,26 @@ import { Box, Container, Divider, Paper, Stack, Typography, useMediaQuery } from
 import Sections from "./Sections";
 import { useTheme } from '@mui/material/styles';
 import VideoJS from './VideoJs';
-import Image from "next/image";
+import Scanner from "@/assets/images/Scanner";
+import Mobile from "@/assets/images/Mobile";
+import Monitor from "@/assets/images/Monitor";
 
 export default function Content () {
     const theme = useTheme();
     const cards = [
         {
             title: 'The box',
-            icon: '/scanner.svg',
+            icon: Scanner,
             descriptions: "Attendees will 'tap-in' using the registration box to log their presence."
         },
         {
             title: 'Dashboard',
-            icon: '/monitor.svg',
+            icon: Monitor,
             descriptions: "Our dashboard, with its user-friendly design, simplifies administrative tasks and promotes easy comprehension of collected data."
         },
         {
             title: 'App',
-            icon: '/mobile.svg',
+            icon: Mobile,
             descriptions: "Our new mobile app enables attendees to register their presence directly from their phone."
         },
     ]
@@ -80,7 +82,7 @@ export default function Content () {
                                 <Box flex={1} mb={0} key={item.title}>
                                     <Paper elevation={8} sx={roundedPaper}>
                                         <Box display='flex' pb={2}>
-                                            <Image width={48} height={48} src={ item.icon } alt={ item.title }/>
+                                            <item.icon />
                                             <Typography variant="h5" component="b" my="auto" pl={2}>{ item.title }</Typography>   
                                         </Box> 
                                         <Typography cpmponent={'p'} color="GrayText">{ item.descriptions }</Typography>
