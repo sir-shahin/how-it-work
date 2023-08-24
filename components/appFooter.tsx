@@ -1,10 +1,11 @@
 import { Box, Button, Grid, Link, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
-import Image from "next/image";
+import Logo from "src/assets/images/Logo";
+import LogoSign from "src/assets/images/LogoSign";
 
 export default function AppFooter(){
     const theme = useTheme();
-    const logoSize = useMediaQuery(theme.breakpoints.down('md')) ? 54 : 200
+    const FooterLogo = useMediaQuery(theme.breakpoints.down('md')) ? LogoSign : Logo;
 
     return(
         <footer>
@@ -13,8 +14,8 @@ export default function AppFooter(){
 
                     <Grid item xs={12} md={3.5}>
                         <Grid container mb={{xs:3, md:0}}>
-                            <Grid item xs={2} md={12} sx={{ filter: 'brightness(100) grayscale(1)'}}>
-                                <Image width={logoSize} height={58} src={useMediaQuery(theme.breakpoints.down('md')) ? '/logo-sign.svg' : '/logo.svg'} alt="logo"/>
+                            <Grid item xs={2} md={12}>
+                                <FooterLogo white={true}/>
                             </Grid>
                             <Grid item xs={10} md={12}>
                                 <Typography color="GrayText">

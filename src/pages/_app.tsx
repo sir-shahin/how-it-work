@@ -1,13 +1,17 @@
 import React from 'react';
-import { CacheProvider } from '@emotion/react';
+import { CacheProvider, EmotionCache } from '@emotion/react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
+import { AppProps } from 'next/app';
 
 import createEmotionCache from '../../utility/createEmotionCache';
 import theme from '../styles/theme';
 
 const clientSideEmotionCache = createEmotionCache();
 
-const App = (props) => {
+interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
+const App = (props:MyAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   return (

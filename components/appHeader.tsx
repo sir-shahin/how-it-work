@@ -13,7 +13,9 @@ import MenuItem from '@mui/material/MenuItem';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import { useMediaQuery, useTheme } from '@mui/material';
-import Image from 'next/image';
+import LogoSign from 'src/assets/images/LogoSign';
+import Logo from 'src/assets/images/Logo';
+import { AppProps } from 'next/app';
 
 
 const pages = [
@@ -24,11 +26,11 @@ const pages = [
   { text:'Contact Us'}
 ];
 
-function AppHeader(props) {
+function AppHeader(props:AppProps) {
   const theme = useTheme();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
-  const handleOpenNavMenu = (event) => {
+  const handleOpenNavMenu = (event:React.SetStateAction<any>) => {
     setAnchorElNav(event.currentTarget);
   };
 
@@ -63,7 +65,7 @@ function AppHeader(props) {
             <Toolbar disableGutters sx={{padding: '0 24px'}}>
 
               <Box sx={{ display: { xs: 'none', md: 'flex' }, mr: { xs:2 , lg: 9}}} >
-                <Image width={188.457} height={58.986} src="/logo.svg" alt="logo"/>
+                <Logo/>
               </Box>
 
               <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -104,7 +106,7 @@ function AppHeader(props) {
               </Box>
               
               <Box py={2} sx={{flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                <Image src="/logo-sign.svg" width="32" height="32" alt='logo'/>
+                <LogoSign />
               </Box>
               {/* Destop menu */}
               <Box py={4} sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>

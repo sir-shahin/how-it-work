@@ -1,25 +1,27 @@
-import { Box, Container, Divider, Grid, Paper, Typography, useMediaQuery } from "@mui/material";
+import { Box, Container, Divider, Paper, Stack, Typography, useMediaQuery } from "@mui/material";
 import Sections from "./Sections";
 import { useTheme } from '@mui/material/styles';
 import VideoJS from './VideoJs';
-import Image from "next/image";
+import Scanner from "src/assets/images/Scanner";
+import Mobile from "src/assets/images/Mobile";
+import Monitor from "src/assets/images/Monitor";
 
 export default function Content () {
     const theme = useTheme();
     const cards = [
         {
             title: 'The box',
-            icon: '/scanner.svg',
+            icon: Scanner,
             descriptions: "Attendees will 'tap-in' using the registration box to log their presence."
         },
         {
             title: 'Dashboard',
-            icon: '/monitor.svg',
+            icon: Monitor,
             descriptions: "Our dashboard, with its user-friendly design, simplifies administrative tasks and promotes easy comprehension of collected data."
         },
         {
             title: 'App',
-            icon: '/mobile.svg',
+            icon: Mobile,
             descriptions: "Our new mobile app enables attendees to register their presence directly from their phone."
         },
     ]
@@ -33,16 +35,23 @@ export default function Content () {
           type: 'video/mp4'
         }]
     };
+    const roundedPaper = [
+        {
+            borderRadius: 3,
+            padding: 3
+        }, 
+        useMediaQuery(theme.breakpoints.up('md')) && {minHeight: 256}
+    ]
 
     return (
         <Container disableGutters>
-            <Grid container mt={3} px={{xs:0 , md:1}}>
-                <Grid item xs={12} md={3} pr={{ md:2 }} mb={4}>
+            <Stack direction={useMediaQuery(theme.breakpoints.down('md')) ? 'column' : 'row'} mt={3} px={{xs:0 , md:1}}>
+                <Box flex={useMediaQuery(theme.breakpoints.up('md')) && '0 0 288px'} pr={{ md:2 }} mb={4}>
                     <aside style={{ position: 'sticky', top:30}}>
                         <Sections />
                     </aside>
-                </Grid>
-                <Grid item xs={12} md={9}>
+                </Box>
+                <Box flex={1}>
                     <Typography 
                         variant={useMediaQuery(theme.breakpoints.down('md')) ? 'h4' : 'h3'} 
                         component="h1" 
@@ -67,23 +76,23 @@ export default function Content () {
 
                     <Typography p={3} color="#0000004D">What you NEED</Typography>
 
-                    <Grid container spacing={3} px={3}>
+                    <Stack direction={useMediaQuery(theme.breakpoints.down('md')) ? 'column' : 'row'} spacing={3} px={3}>
                         {
                             cards.map(item => (
-                                <Grid item xs={12} md={4} mb={0} key={item.title}>
-                                    <Paper elevation={8} sx={{borderRadius: 3, padding: 3, minHeight: 256}}>
+                                <Box flex={1} mb={0} key={item.title}>
+                                    <Paper elevation={8} sx={roundedPaper}>
                                         <Box display='flex' pb={2}>
-                                            <Image width={48} height={48} src={ item.icon } alt={ item.title }/>
+                                            <item.icon />
                                             <Typography variant="h5" component="b" my="auto" pl={2}>{ item.title }</Typography>   
                                         </Box> 
-                                        <Typography cpmponent={'p'} color="GrayText">{ item.descriptions }</Typography>
+                                        <Typography component={'p'} color="GrayText">{ item.descriptions }</Typography>
                                     </Paper>
-                                </Grid>
+                                </Box>
                             ))
                         } 
-                    </Grid>
-                </Grid>
-            </Grid>
+                    </Stack>
+                </Box>
+            </Stack>
         </Container>
     )
 }
